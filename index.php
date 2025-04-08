@@ -18,4 +18,20 @@ for ($i=0; $i <101; $i++) {
 if ($i >= 101) {
 echo "La somme du calcul des nombre de 1 a 100 est de  $somme";
 }
+
+
 ?>  
+<br>;
+
+<!-- exo 3 -->
+<?php
+
+for ($i = 2; $i <= 2; $i++)
+{
+    Echo 'Table de multiplication de '.$i.'<br>';
+    for ($j = 1; $j <= 10; $j++)
+    {
+        echo $i.' x '.$j.' = '.$i*$j.'<br>';
+    }
+}
+?>
