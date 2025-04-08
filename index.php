@@ -35,3 +35,13 @@ for ($i = 2; $i <= 2; $i++)
     }
 }
 ?>
+<br>;
+<!-- exo1 -->
+<?php  
+$fruits = array("Pomme", "Banane", "Orange", "Fraise", "Kiwi"); 
+
+foreach ($fruits as $x) {
+  echo "$x <br>";
+}
+?> 
+
