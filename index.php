@@ -69,7 +69,7 @@ foreach ($etudiants as $etudiant) {
 
 
 $jour = date('');
-switch ($date) {
+switch ($jour) {
     case '0':
         echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
         break;
