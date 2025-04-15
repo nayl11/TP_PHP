@@ -67,9 +67,11 @@ foreach ($etudiants as $etudiant) {
     echo $etudiant  ["nom"].$etudiant["note"]  ."<br>";
 }
 
+echo "<br>";
 
-$jour = date('');
-switch ($date) {
+$jour = date('l');
+$message = "super!";
+switch ($jour) {
     case '0':
         echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
         break;
@@ -93,39 +95,55 @@ switch ($date) {
         
 }
 
-$notation = note('');
+echo "<br>";
+
+$note = 11
+;
 switch ($note) {
-    case ("note >=18") :
-        echo "note: " . $note . "/20 - Excellent (A+): ";
+    case ($note >=18) :
+        echo "note: " . $note . "/20 - Excellent (A+)";
         break;
-    case ("note >=16") :
-        echo "note: " . $note . "/20 - Très bien (A): ";
+    case ($note >=16) :
+        echo "note: " . $note . "/20 - Très bien (A)";
         break;
-    case ("note >=14") :
-        echo "note: " . $note . "/20 - Bien : ";
+    case ($note >=14) :
+        echo "note: " . $note . "/20 - Bien";
         break;
-    case ("note >=12") :
-        echo "note: " . $note . "/20 - Assez bien : ";
+    case ($note >=12) :
+        echo "note: " . $note . "/20 - Assez bien";
         break;
     default:
-        echo "note: " . $note . "/20 - Passable : ";
+        echo "note: " . $note . "/20 - Passable";
             
 }
 
 
-
-
-
-
-
-
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
 // boucle for qui décrimente de 80 a 60
 
-for ($i=80; $i >61 ; $i--) { 
+for ($i=80; $i >=60 ; $i--) { 
+    echo "Le nombre est: $i <br>";
+}
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+for ($i=0; $i <= 20;$i++) { 
     echo "Le nombre est: $i <br>";
 }
 
-for ($i=0; $i <20;$i++) { 
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+for ($i=20; $i >= 0;$i--) { 
     echo "Le nombre est: $i <br>";
 }
+
+
+
+
+
