@@ -67,9 +67,49 @@ foreach ($etudiants as $etudiant) {
     echo $etudiant  ["nom"].$etudiant["note"]  ."<br>";
 }
 
+$jour = date('');
+switch ($date) {
+    case '0':
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break;
+    case "1":
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break;
+    case '2':
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break;
+    case '3':
+         echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break;
+    case '4':
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break; 
+    case '5':
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        break; 
+    default: 
+        echo "Aujourd'hui c'est " . $jour . ": " . $message . "<br><br>";
+        
+}
 
-
-
+$notation = note('');
+switch ($note) {
+    case ("note >=18") :
+        echo "note: " . $note . "/20 - Excellent (A+): ";
+        break;
+    case ("note >=16") :
+        echo "note: " . $note . "/20 - Très bien (A): ";
+        break;
+    case ("note >=14") :
+        echo "note: " . $note . "/20 - Bien : ";
+        break;
+    case ("note >=12") :
+        echo "note: " . $note . "/20 - Assez bien : ";
+        break;
+    default:
+        echo "note: " . $note . "/20 - Passable : ";
+            
+}
 
 
 
