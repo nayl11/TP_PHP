@@ -142,8 +142,3 @@ echo "<br>";
 for ($i=20; $i >= 0;$i--) { 
     echo "Le nombre est: $i <br>";
 }
-
-
-
-
-
