@@ -67,6 +67,7 @@ foreach ($etudiants as $etudiant) {
     echo $etudiant  ["nom"].$etudiant["note"]  ."<br>";
 }
 
+
 $jour = date('');
 switch ($date) {
     case '0':
