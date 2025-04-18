@@ -1,90 +1,71 @@
 <?php
+// Définition d'une classe Personne
 
-// Classe parente
-class Vehicule {
-    protected $marque;
-    protected $modele;
-    protected $annee;
+class Personne {
+    // Propriétés (attributs)
+    private $nom;
+    private $prenom;
+    private $age;
     
-    public function __construct($marque,$modele,$annee) {
-      $this->marque=$marque;
-      $this->modele=$modele;
-      $this->annee=$annee;
-    }
+    public function __construct(string $nom , string $prenom ,int $age){
+      $this->nom=$nom;
+      $this->prenom=$prenom;
+      $this->age=$age;
+  }
+
     
-    public function getInfos() {
-        echo "Marque : {$this->marque}  ,  Modele : {$this->modele}  ,    Année : {$this->annee}  ,";
-    }
+    // Getters (accesseurs)
     
-    public function demarrer() {
-        return "Le véhicule démarre.";
-    }
+public function getNom() {
+  return $this->nom;
+}
+public function getPrenom() {
+  return $this->prenom;
 }
 
-// Classe enfant qui hérite de Vehicule
-
-class Voiture extends Vehicule {
-    private $nombrePortes;
-    private $typeCarburant;
-    
-    public function __construct($marque,$modele,$annee,$nombrePortes,$typeCarburant) {
-        // Appel du constructeur parent
-
-        parent::__construct($marque, $modele, $annee);
-        
-        // Initialisation des propriétés spécifiques
-
-        $this->nombreportes = $nombrePortes;
-        $this->typecarburant = $typeCarburant;
-    }
-    
-    // Surcharge de la méthode getInfos()
-
-    public function getInfos() {
-      parent::getInfos();
-      echo "  Nombre de portes :  {$this->nombreportes} , Type de carburant :  {$this->typecarburant} ";
-    }
-    
-    // Méthode spécifique
-
-    public function klaxonner() {
-        return  "Klaxonne !"; 
-    }
+public function getAge() {
+  return $this->age;
 }
 
-// Classe enfant qui hérite de Vehicule
-class Moto extends Vehicule {
-    private $cylindree;
-    
-    public function __construct($marque, $modele, $annee, $cylindree) {
-        parent::__construct($marque, $modele, $annee);
-        $this->cylindree = $cylindree;
-    }
+    // Setters (mutateurs)
 
-    public function getInfos() {
-        parent::getInfos();
-        echo "Cylindrée : {$this->cylindree} <br>";
-    }
+    public function setNom($nom){
+      $this->nom= $nom;
+   }
+    public function setPrenom($prenom){
+      $this->prenom= $prenom;
+   }
+   public function setAge($age){
+    $this->age= $age;
+ }
 
-    public function klaxonner() {
-        return "Klaxon de moto !";
+    // Méthodes
+
+    // public function sePresenter()
+    public function sePresenter(){
+      echo "Nom : {$this->nom}  ,   Prenom : {$this->prenom} ,  Age : {$this->age}<br>"; 
     }
     
-  
+    // public function estMajeur()
+
+    public function estMajeur() {
+      return $this-> age>= 18;
+  }
 }
+// Utilisation de la classe
+$personne1 = new Personne("Naylis", "Lattar", 28);
 
-// Utilisation des classes
-$voiture = new Voiture("Renault", "Clio", 2020, 5, "Essence");
-$moto = new Moto("XADV", "250", 2021, "Essence");
+$personne1->sePresenter();
 
-$voiture->getInfos();
+// Modification des propriétés
+
+$personne1->setNom("Zohra");
+$personne1->setAge(54);
+$personne1->sePresenter();
 
 
-echo "<br>";
- echo $voiture->klaxonner();
+	
 
-echo "<br>";
-echo $moto->klaxonner();
 
 
 
