@@ -1,61 +1,90 @@
- <?php
-// Paramètres de connexion à la base de données
+<?php
 
- $host = "localhost" ;
- $dbname = "depot_tp_php" ;
- $username = "root" ;
- $motdepasse = "" ;
- $charset = "utf8mb4" ;
-
-// DSN (Data Source Name)
- $dsn="mysql:host=$host;dbname=$dbname;charset=$charset";
-
- $options = [
-    PDO ::ATTR_ERRMODE => PDO ::ERRMODE_EXCEPTION,
-    PDO ::ATTR_DEFAULT_FETCH_MODE => PDO ::FETCH_ASSOC,
-    PDO ::ATTR_EMULATE_PREPARES => false
-    // Gestion des erreurs avec exceptions
-   // Mode de récupération par défaut: tableau associatif
-   // Désactiver l'émulation des requêtes préparées
- ];
-// Création de l'instance PDO
-try {
-    $pdo = new PDO ($dsn, $username,$motdepasse,$options);
-    echo "Connexion à la base de données réussie ! </br></br>" ;
-
-
-  
-$sql = " INSERT INTO users (email, nom , âge) VALUES (?,?,?) " ;
- $stmt = $pdo -> prepare ( $sql );
- $stmt -> execute ([ " naylis.lattar11@gmail.com","Naylis",99]);
- echo "Nouvel utilisateur inséré avec l'ID: " . $pdo -> lastInsertId () . "<br><br>" ;
-
-
- echo "Utilisateurs de plus de 30 ans :<br>" ;
- $sql = " SELECT *FROM  users WHERE âge > ? " ;
- $stmt = $pdo -> prepare ( $sql );
- $stmt -> execute ([ 30 ]);
- foreach ( $stmt as $stmts ) {
-    echo "Nom: " . $stmts [ "nom" ] . ", Âge: " . $stmts [ "âge" ] . "<br>" ;
- }
-
- $sql = " UPDATE users SET âge = 30 WHERE âge = ? " ;
- $stmt = $pdo -> prepare ( $sql );
- $stmt -> execute ([ 99 ]);
- echo "Nombre d'utilisateurs mis à jour: " . $stmt -> rowCount () . "<br>" ;
-
- $sql = " DELETE FROM users WHERE âge = ? " ;
- $stmt = $pdo -> prepare ( $sql );
- $stmt -> execute ([ 99 ]);
- echo "Nombre d'utilisateurs supprimés : " . $stmt -> rowCount () . "<br>" ;
-
-
- } catch ( PDOException $e ) {
+// Classe parente
+class Vehicule {
+    protected $marque;
+    protected $modele;
+    protected $annee;
     
-    echo "Erreur de connexion à la base de données : " . $e -> getMessage() . "<br>" ;
- } 
+    public function __construct($marque,$modele,$annee) {
+      $this->marque=$marque;
+      $this->modele=$modele;
+      $this->annee=$annee;
+    }
+    
+    public function getInfos() {
+        echo "Marque : {$this->marque}  ,  Modele : {$this->modele}  ,    Année : {$this->annee}  ,";
+    }
+    
+    public function demarrer() {
+        return "Le véhicule démarre.";
+    }
+}
+
+// Classe enfant qui hérite de Vehicule
+
+class Voiture extends Vehicule {
+    private $nombrePortes;
+    private $typeCarburant;
+    
+    public function __construct($marque,$modele,$annee,$nombrePortes,$typeCarburant) {
+        // Appel du constructeur parent
+
+        parent::__construct($marque, $modele, $annee);
+        
+        // Initialisation des propriétés spécifiques
+
+        $this->nombreportes = $nombrePortes;
+        $this->typecarburant = $typeCarburant;
+    }
+    
+    // Surcharge de la méthode getInfos()
+
+    public function getInfos() {
+      parent::getInfos();
+      echo "  Nombre de portes :  {$this->nombreportes} , Type de carburant :  {$this->typecarburant} ";
+    }
+    
+    // Méthode spécifique
+
+    public function klaxonner() {
+        return  "Klaxonne !"; 
+    }
+}
+
+// Classe enfant qui hérite de Vehicule
+class Moto extends Vehicule {
+    private $cylindree;
+    
+    public function __construct($marque, $modele, $annee, $cylindree) {
+        parent::__construct($marque, $modele, $annee);
+        $this->cylindree = $cylindree;
+    }
+
+    public function getInfos() {
+        parent::getInfos();
+        echo "Cylindrée : {$this->cylindree} <br>";
+    }
+
+    public function klaxonner() {
+        return "Klaxon de moto !";
+    }
+    
+  
+}
+
+// Utilisation des classes
+$voiture = new Voiture("Renault", "Clio", 2020, 5, "Essence");
+$moto = new Moto("XADV", "250", 2021, "Essence");
+
+$voiture->getInfos();
 
 
+echo "<br>";
+ echo $voiture->klaxonner();
+
+echo "<br>";
+echo $moto->klaxonner();
 
 
 
